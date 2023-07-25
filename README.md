@@ -12,7 +12,7 @@
 - English version for [EN: eyeForm - AI test](https://neurobit-ai.github.io/eyeForm/myopia/us-en/)
 - Traditional Chinese version for [TW: eyeForm – AI test](https://neurobit-ai.github.io/eyeForm/myopia/zh-tw/)
 - Simplified Chinese version for [CH: eyeForm – AI test](https://neurobit-ai.github.io/eyeForm/myopia/zh-cn/)
-- 個人測試用 [連結](https://neurobit-ai.github.io/Alisterchan/eyeForm_new_feature/zh-tw/)
+- 個人測試用 [連結](https://alisterchan.github.io/eyeForm_new_feature/myopia/zh-tw/)
 #### Access to the TSGH exclusive platform is restricted to authorized users only.
 - TSGH version (Traditional Chinese version) for [TSGH: eyeForm - AI test](https://neurobit-ai.github.io/eyeForm/)
 - eyeForm.db.xlsx from Google Sheets for TSGH website version
