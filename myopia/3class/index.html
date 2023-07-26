@@ -44,7 +44,7 @@
           }
         });
       }
-      window.onload = function () {
+      /*window.onload = function () {
         google.accounts.id.initialize({
           client_id: "804327021269-tvgs2une4gdpepaslb7niggg1c0pldjp.apps.googleusercontent.com",
           callback: handleCredentialResponse
@@ -54,12 +54,12 @@
           { theme: "filled_blue", size: "large", text: "continue_with" }  // customization attributes
         );
         // google.accounts.id.prompt(); // also display the One Tap dialog
-      }
+      }*/
     </script>
     <script type="text/javascript">
-      $(window).on('load', function() {
+      /*$(window).on('load', function() {
           $('#staticBackdrop').modal('show');
-      });
+      });*/
     </script>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -614,15 +614,10 @@
                     <label class="form-label" for="treatment2">散瞳劑</label>
                     <select class="form-select" name="treatment2" id="treatment2" disabled>
                       <option value=""></option>
-                      <option value="短效">短效</option>
-                      <option value="0.01%">0.01%</option>
-                      <option value="0.02%">0.02%</option>
-                      <option value="0.03%">0.03%</option>
-                      <option value="0.05%">0.05%</option>
-                      <option value="0.1%">0.1%</option>
-                      <option value="0.3%">0.3%</option>
-                      <option value="0.5%">0.5%</option>
-                      <option value="1.0%">1.0%</option>
+                      <option value="其他">其他</option>
+                      <option value="低散瞳劑">低散瞳劑</option>
+                      <option value="中散瞳劑">中散瞳劑</option>
+                      <option value="高散瞳劑">高散瞳劑</option>
                     </select>
                   </div>
                   <div class="col-4 form-group">
@@ -851,10 +846,13 @@
           $('#treatment2').prop('disabled', false);
           $('#treatment3').prop('disabled', false);
           if (suggestion == '不處置') treatments('', '', '');
-          if (suggestion == '一般眼鏡') treatments('一般眼鏡', '', '');
-          if (suggestion == '散瞳劑') treatments('', '0.1%', '');
-          if (suggestion == '一般眼鏡散瞳劑') treatments('一般眼鏡', '0.1%', '');
-          if (suggestion == '角膜塑型片') treatments('', '', '角膜塑型片');
+          else if (suggestion == '低散瞳劑') treatments('', '低散瞳劑', '');
+          else if (suggestion == '中散瞳劑') treatments('', '中散瞳劑', '');
+          else if (suggestion == '高散瞳劑') treatments('', '高散瞳劑', '');
+          else if (suggestion == '一般眼鏡') treatments('一般眼鏡', '', '');
+          else if (suggestion == '一般眼鏡+散瞳劑') treatments('一般眼鏡', '中散瞳劑', '');
+          else if (suggestion == '角膜塑型片') treatments('', '', '角膜塑型片');
+          else treatments('', '', '');
           // if (suggestion == '散瞳劑角膜塑型片') treatments('', '0.1%', '角膜塑型片');
         }
       });
