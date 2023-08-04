@@ -202,7 +202,7 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od1">右眼最佳矯正視力<span class="form-range-value" id="od1value">0.5</span></label>
+                    <label class="form-label" for="od1" >右眼最佳矯正視力<span class="form-range-value" id="od1value">0.5</span></label>
                     <label class="form-label" for="od0">戴眼鏡</label>
                     <input type="checkbox" class="form-check-input" name="od0" id="od0" value="G">
                     <input type="range" class="form-range" min=0 max=1 step=0.1 name="od1" id="od1">
@@ -1031,6 +1031,8 @@
       if (document.getElementById('os0').checked || document.getElementById('od0').checked ) features.push(1);
       else features.push(0);
       if (document.getElementById('age').value) features.push(year + month/12);
+      //alert(features);
+      alert(document.getElementById('od1').value);
       if (features.length == 11)
       $.ajax({
         url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
@@ -1072,6 +1074,10 @@
         localStorage.setItem('site', site.value);
         localStorage.setItem('age', document.getElementById('age').value);
         localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
+        if (document.getElementById('os0').checked || document.getElementById('od0').checked ) 
+          localStorage.setItem('glasses', 1);
+        else 
+          localStorage.setItem('glasses', 0);
         localStorage.setItem('od1', document.getElementById('od1').value);
         localStorage.setItem('os1', document.getElementById('os1').value);
         localStorage.setItem('od2', document.getElementById('od2').value);
@@ -1103,6 +1109,10 @@
         localStorage.setItem('site', site.value);
         localStorage.setItem('age', document.getElementById('age').value);
         localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
+        if (document.getElementById('os0').checked || document.getElementById('od0').checked ) 
+          localStorage.setItem('glasses', 1);
+        else 
+          localStorage.setItem('glasses', 0);
         localStorage.setItem('od1', document.getElementById('od1').value);
         localStorage.setItem('os1', document.getElementById('os1').value);
         localStorage.setItem('od2', document.getElementById('od2').value);
