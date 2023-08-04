@@ -1031,8 +1031,6 @@
       if (document.getElementById('os0').checked || document.getElementById('od0').checked ) features.push(1);
       else features.push(0);
       if (document.getElementById('age').value) features.push(year + month/12);
-      //alert(features);
-      alert(document.getElementById('od1').value);
       if (features.length == 11)
       $.ajax({
         url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
