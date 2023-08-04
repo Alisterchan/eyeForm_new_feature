@@ -20,6 +20,14 @@
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="../../js/jquery.validate.min.js"></script>
     <script src="../../js/myopia-main.js"></script>
+
+    <style>
+      .warning_msg {
+        color: red;
+        font-size: 10px;
+        margin-top: 5px;
+      }
+    </style>
   </head>
 
   <body class="bg-light">
@@ -99,17 +107,19 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="medRecNo">病歷號</label>
+                    <label class="form-label" for="medRecNo" id="medRecNoID">病歷號</label>
                     <input type="text" class="form-control" name="medRecNo" id="medRecNo">
+                    <span class="warning_msg" id="medRecNo_warning"> </span>
                   </div>
                   <div class="col-3 form-group">
-                    <label class="form-label" for="site">院所</label>
+                    <label class="form-label" for="site" id="siteID">院所</label>
                     <select class="form-select" name="site" id="site">
                       <option value=""></option>
                       <option value="Neurobit">Neurobit</option>
                       <option value="TTT">TTT</option>
                       <option value="HHH">HHH</option>
                     </select>
+                    <span class="warning_msg" id="site_warning"> </span>
                   </div>
                   <div class="col-3 form-group">
                     <label class="form-label" for="caseNo">案號</label>
@@ -119,18 +129,20 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="dateOfVisit">就診西元年/月/日</label>
+                    <label class="form-label" for="dateOfVisit" id="dateOfVisitID">就診西元年/月/日</label>
                     <input type="date" class="form-control" name="dateOfVisit" id="dateOfVisit">
+                    <span class="warning_msg" id="dateOfVisit_warning"></span>
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="dateOfBirth">出生西元年/月/日</label>
+                    <label class="form-label" for="dateOfBirth" id="dateOfBirthID">出生西元年/月/日</label>
                     <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth">
+                    <span class="warning_msg" id="dateOfBirth_warning"></span>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-3 form-group">
-                    <label class="form-label" for="age">實歲</label>
+                    <label class="form-label" for="age" id="ageID">實歲</label>
                     <input type="text" class="form-control" name="age" id="age" disabled>
                   </div>
                   <div class="col-3 form-group">
@@ -158,11 +170,12 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label">性別</label>
+                    <label class="form-label" id="sexID">性別</label>
                     <input type="radio" class="form-check-input" name="sex" id="sexM" value="男">
                     <label class="form-label" for="sexM">男　</label>
                     <input type="radio" class="form-check-input" name="sex" id="sexF" value="女">
                     <label class="form-label" for="sexF">女　</label>
+                    <span class="warning_msg" id="sex_warning"></span>
                   </div>
                   <div class="col-6 form-group">
                     <label class="form-label">胎別</label>
@@ -171,6 +184,7 @@
                     <input type="radio" class="form-check-input" name="birth" id="births" value="多">
                     <label class="form-label" for="births">多　</label>
                   </div>
+                  
                 </div>
 
                 <div class="row">
@@ -188,13 +202,13 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od1">右眼最佳矯正視力<span class="form-range-value" id="od1value"></span></label>
+                    <label class="form-label" for="od1" id="od1">右眼最佳矯正視力<span class="form-range-value" id="od1value">0.5</span></label>
                     <label class="form-label" for="od0">戴眼鏡</label>
                     <input type="checkbox" class="form-check-input" name="od0" id="od0" value="G">
                     <input type="range" class="form-range" min=0 max=1 step=0.1 name="od1" id="od1">
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="os1">左眼最佳矯正視力<span class="form-range-value" id="os1value"></span></label>
+                    <label class="form-label" for="os1">左眼最佳矯正視力<span class="form-range-value" id="os1value">0.5</span></label>
                     <label class="form-label" for="os0">戴眼鏡</label>
                     <input type="checkbox" class="form-check-input" name="os0" id="os0" value="G">
                     <input type="range" class="form-range" min=0 max=1 step=0.1 name="os1" id="os1">
@@ -203,29 +217,29 @@
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od2">右眼球面度數 <span class="form-range-value" id="od2value"></span></label>
+                    <label class="form-label" for="od2">右眼球面度數 <span class="form-range-value" id="od2value">0.00</span></label>
                     <input type="range" class="form-range" min=-10 max=10 step=0.25 name="od2" id="od2">
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="os2">左眼球面度數 <span class="form-range-value" id="os2value"></span></label>
+                    <label class="form-label" for="os2">左眼球面度數 <span class="form-range-value" id="os2value">0.00</span></label>
                     <input type="range" class="form-range" min=-10 max=10 step=0.25 name="os2" id="os2">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od3">右眼散光度數 <span class="form-range-value" id="od3value"></span></label>
+                    <label class="form-label" for="od3">右眼散光度數 <span class="form-range-value" id="od3value">-3.50</span></label>
                     <input type="range" class="form-range" min=-7 max=0 step=0.25 name="od3" id="od3">
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="os3">左眼散光度數 <span class="form-range-value" id="os3value"></span></label>
+                    <label class="form-label" for="os3">左眼散光度數 <span class="form-range-value" id="os3value">-3.50</span></label>
                     <input type="range" class="form-range" min=-7 max=0 step=0.25 name="os3" id="os3">
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od4">右眼軸度</label>
+                    <label class="form-label" for="od4" id="od4ID">右眼軸度</label>
                     <select class="form-select" name="od4" id="od4">
                       <option value=""></option>
                       <optgroup label="常見">
@@ -275,9 +289,10 @@
                         <option value="175">175</option>
                       </optgroup>
                     </select>
+                    <span class="warning_msg" id="od4ID_warning"> </span>
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="os4">左眼軸度</label>
+                    <label class="form-label" for="os4" id="os4ID">左眼軸度</label>
                     <select class="form-select" name="os4" id="os4">
                       <option value=""></option>
                       <optgroup label="常見">
@@ -327,12 +342,13 @@
                         <option value="175">175</option>
                       </optgroup>
                     </select>
+                    <span class="warning_msg" id="os4ID_warning"> </span>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label class="form-label" for="od5int">右眼軸長(mm)</label>
+                    <label class="form-label" for="od5int" id="od5intID">右眼軸長(mm)</label>
                     <div class="row g-0">
                       <div class="col-6 form-group">
                         <select class="form-select" name="od5int" id="od5int">
@@ -351,6 +367,7 @@
                           <option value="30">30</option>
                           <option value="> 30">> 30</option>
                         </select>
+                        <span class="warning_msg" id="od5int_warning"> </span>
                       </div>
                       <div class="col-6 form-group">
                         <select class="form-select" name="od5dec" id="od5dec">
@@ -459,7 +476,7 @@
                     </div>
                   </div>
                   <div class="col-6 form-group">
-                    <label class="form-label" for="os5int">左眼軸長(mm)</label>
+                    <label class="form-label" for="os5int" id="os5intID">左眼軸長(mm)</label>
                     <div class="row g-0">
                       <div class="col-6 form-group">
                         <select class="form-select" name="os5int" id="os5int">
@@ -478,6 +495,7 @@
                           <option value="30">30</option>
                           <option value="> 30">> 30</option>
                         </select>
+                        <span class="warning_msg" id="os5int_warning"></span>
                       </div>
                       <div class="col-6 form-group">
                         <select class="form-select" name="os5dec" id="os5dec">
@@ -614,7 +632,6 @@
                     <label class="form-label" for="treatment2">散瞳劑</label>
                     <select class="form-select" name="treatment2" id="treatment2" disabled>
                       <option value=""></option>
-                      <option value="其他">其他</option>
                       <option value="低散瞳劑">低散瞳劑</option>
                       <option value="中散瞳劑">中散瞳劑</option>
                       <option value="高散瞳劑">高散瞳劑</option>
@@ -633,7 +650,9 @@
 
                 <div class="col">
                   <div class="float-end form-group">
-                    <label class="form-label">提醒您，自動填入的最近就診日期要更新喔👆</label><br>
+                    <label id="notification01" class="form-label">提醒您，自動填入的最近就診日期要更新喔👆</label><br>
+                    <input type="submit" id="submit" value="上傳" style="display:none;" class="btn btn-outline-primary btn-rounded py-0 px-4">
+                    <span class="submitting"></span>
                     <button type="button" id="suggestion" class="btn btn-outline-primary btn-rounded py-0 px-4">
                       處置建議
                     </button>
@@ -643,14 +662,14 @@
                     <button type="button" id="report2" class="btn btn-outline-primary btn-rounded py-0 px-4">
                       球面度數危險度分析
                     </button>
-                    <input type="submit" id="submit" value="上傳" class="btn btn-outline-primary btn-rounded py-0 px-4">
-                    <span class="submitting"></span>
+                    <button type="button" id="uploadform" onclick="check_submit_form_integrity();" class="btn btn-outline-primary btn-rounded py-0 px-4">
+                      上傳
+                    </button>
                   </div>
                 </div>
                 <br><br>
 
               </form>
-
               <div id="form-message-warning mt-4"></div> 
               <div id="form-message-success">
                 上傳完畢！
@@ -816,8 +835,185 @@
       document.getElementById('treatment2').value = treatment2;
       document.getElementById('treatment3').value = treatment3;
     }
+    
+    var label = document.getElementById("notification01");
+
+    function check_value_func(check_value)
+    {
+      if (check_value == '' || check_value == null) 
+        return true;
+     else 
+        return false;
+    }
+
+    function check_submit_form_integrity()
+    {
+      var check=true;
+      if(check_value_func(document.getElementById('medRecNo').value))
+          { 
+            check=false;
+            (document.getElementById('medRecNo_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('medRecNo_warning')).textContent="";
+          }
+      if(check_value_func(document.getElementById('site').value))
+          { 
+            check=false;
+            (document.getElementById('site_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('site_warning')).textContent="";     
+          }
+          if (isNaN(Date.parse(dateOfVisit.value)))
+      { 
+            check=false;
+            (document.getElementById('dateOfVisit_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('dateOfVisit_warning')).textContent="";
+          }
+          if (isNaN(Date.parse(dateOfBirth.value)))
+      { 
+            check=false;
+            (document.getElementById('dateOfBirth_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('dateOfBirth_warning')).textContent="";
+          }
+          (document.getElementById('sex_warning')).textContent="";
+          (document.getElementById('od4ID_warning')).textContent="";
+          (document.getElementById('os4ID_warning')).textContent="";
+          (document.getElementById('od5int_warning')).textContent="";
+          (document.getElementById('os5int_warning')).textContent="";
+
+    var submitbotton=document.getElementById('submit');
+          if(check)
+          submitbotton.click();
+          else
+          window.scrollTo(0, 0);
+      return check;
+    }
+
+    function check_spherical_diopter_form_integrity()
+    {
+      var check=true;
+
+      if(check_value_func(document.getElementById('od4').value))
+          { 
+            check=false;
+            (document.getElementById('od4ID_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('od4ID_warning')).textContent="";
+          }       
+      if(check_value_func(document.getElementById('os4').value))
+          { 
+            check=false;
+            (document.getElementById('os4ID_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('os4ID_warning')).textContent="";
+          }
+      (document.getElementById('od5int_warning')).textContent="";
+      (document.getElementById('os5int_warning')).textContent="";
+      return check;
+    }
+
+    function check_axial_length_form_integrity()
+    {
+      var check=true;
+
+      (document.getElementById('od4ID_warning')).textContent="";
+      (document.getElementById('os4ID_warning')).textContent="";
+      if(check_value_func(document.getElementById('od5int').value))
+      { 
+            check=false;
+            (document.getElementById('od5int_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('od5int_warning')).textContent="";
+          }  
+      if(check_value_func(document.getElementById('os5int').value))
+      { 
+            check=false;
+            (document.getElementById('os5int_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('os5int_warning')).textContent="";
+          }  
+
+       return check;
+    }
+
+    function check_form_integrity()
+    {
+      var check=true;
+      if(check_value_func(document.getElementById('medRecNo').value))
+          { 
+            check=false;
+            (document.getElementById('medRecNo_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('medRecNo_warning')).textContent="";
+          }
+      if(check_value_func(document.getElementById('site').value))
+          { 
+            check=false;
+            (document.getElementById('site_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('site_warning')).textContent="";     
+          }
+  
+      if (isNaN(Date.parse(dateOfVisit.value)))
+      { 
+            check=false;
+            (document.getElementById('dateOfVisit_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('dateOfVisit_warning')).textContent="";
+          }
+          if (isNaN(Date.parse(dateOfBirth.value)))
+      { 
+            check=false;
+            (document.getElementById('dateOfBirth_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('dateOfBirth_warning')).textContent="";
+          } 
+      hasChecked = Array.from(document.querySelectorAll('input[name="sex"]')).some(function(element) {
+        return element.checked;
+      });
+      if(!hasChecked)
+          { 
+            check=false;
+            (document.getElementById('sex_warning')).textContent="⚠️必填";
+          }
+      else
+          {
+            (document.getElementById('sex_warning')).textContent="";
+          }
+
+      return check;
+    }
+
     var suggestion = document.getElementById("suggestion");
     suggestion.onclick = function() {
+    if(check_form_integrity() & check_spherical_diopter_form_integrity())
+    {
       features = [];
 
       features.push(parseFloat(document.getElementById('od1').value));
@@ -860,49 +1056,75 @@
           // if (suggestion == '散瞳劑角膜塑型片') treatments('', '0.1%', '角膜塑型片');
         }
       });
+      label.textContent = "資料填寫完整，提供醫療處置建議";
+    }
+    else
+      {
+        window.scrollTo(0, 0);
+        label.textContent = "再檢查一下，確保資料沒有漏填";
+      }
     }
 
     var report1 = document.getElementById("report1");
     report1.onclick = function() {
-      localStorage.setItem('medRecNo', medRecNo.value);
-      localStorage.setItem('site', site.value);
-      localStorage.setItem('age', document.getElementById('age').value);
-      localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
-      localStorage.setItem('od1', document.getElementById('od1').value);
-      localStorage.setItem('os1', document.getElementById('os1').value);
-      localStorage.setItem('od2', document.getElementById('od2').value);
-      localStorage.setItem('os2', document.getElementById('os2').value);
-      localStorage.setItem('od3', document.getElementById('od3').value);
-      localStorage.setItem('os3', document.getElementById('os3').value);
-      localStorage.setItem('od4', document.getElementById('od4').value);
-      localStorage.setItem('os4', document.getElementById('os4').value);
-      localStorage.setItem('od5', (od5int.value >= 20 && od5int.value <= 30)?od5int.value+od5dec.value:0);
-      localStorage.setItem('os5', (os5int.value >= 20 && os5int.value <= 30)?os5int.value+os5dec.value:0);
-      localStorage.setItem('Y', year);
-      localStorage.setItem('M', month);
-      localStorage.setItem('report', '軸長');
-      window.open('report.html');
+      if(check_form_integrity() & check_axial_length_form_integrity())
+      {
+        localStorage.setItem('medRecNo', medRecNo.value);
+        localStorage.setItem('site', site.value);
+        localStorage.setItem('age', document.getElementById('age').value);
+        localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
+        localStorage.setItem('od1', document.getElementById('od1').value);
+        localStorage.setItem('os1', document.getElementById('os1').value);
+        localStorage.setItem('od2', document.getElementById('od2').value);
+        localStorage.setItem('os2', document.getElementById('os2').value);
+        localStorage.setItem('od3', document.getElementById('od3').value);
+        localStorage.setItem('os3', document.getElementById('os3').value);
+        localStorage.setItem('od4', document.getElementById('od4').value);
+        localStorage.setItem('os4', document.getElementById('os4').value);
+        localStorage.setItem('od5', (od5int.value >= 20 && od5int.value <= 30)?od5int.value+od5dec.value:0);
+        localStorage.setItem('os5', (os5int.value >= 20 && os5int.value <= 30)?os5int.value+os5dec.value:0);
+        localStorage.setItem('Y', year);
+        localStorage.setItem('M', month);
+        localStorage.setItem('report', '軸長');
+        label.textContent = "資料填寫完整，開啟軸長危險度分析";
+        window.open('report.html');
+      }
+      else
+      {
+        window.scrollTo(0, 0);
+        label.textContent = "再檢查一下，確保資料沒有漏填";
+      }
     }
+
     var report2 = document.getElementById("report2");
     report2.onclick = function() {
-      localStorage.setItem('medRecNo', medRecNo.value);
-      localStorage.setItem('site', site.value);
-      localStorage.setItem('age', document.getElementById('age').value);
-      localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
-      localStorage.setItem('od1', document.getElementById('od1').value);
-      localStorage.setItem('os1', document.getElementById('os1').value);
-      localStorage.setItem('od2', document.getElementById('od2').value);
-      localStorage.setItem('os2', document.getElementById('os2').value);
-      localStorage.setItem('od3', document.getElementById('od3').value);
-      localStorage.setItem('os3', document.getElementById('os3').value);
-      localStorage.setItem('od4', document.getElementById('od4').value);
-      localStorage.setItem('os4', document.getElementById('os4').value);
-      localStorage.setItem('od5', (od5int.value >= 20 && od5int.value <= 30)?od5int.value+od5dec.value:0);
-      localStorage.setItem('os5', (os5int.value >= 20 && os5int.value <= 30)?os5int.value+os5dec.value:0);
-      localStorage.setItem('Y', year);
-      localStorage.setItem('M', month);
-      localStorage.setItem('report', '球面度數');
-      window.open('report.html');
+      if(check_form_integrity() & check_spherical_diopter_form_integrity())
+      {
+        localStorage.setItem('medRecNo', medRecNo.value);
+        localStorage.setItem('site', site.value);
+        localStorage.setItem('age', document.getElementById('age').value);
+        localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
+        localStorage.setItem('od1', document.getElementById('od1').value);
+        localStorage.setItem('os1', document.getElementById('os1').value);
+        localStorage.setItem('od2', document.getElementById('od2').value);
+        localStorage.setItem('os2', document.getElementById('os2').value);
+        localStorage.setItem('od3', document.getElementById('od3').value);
+        localStorage.setItem('os3', document.getElementById('os3').value);
+        localStorage.setItem('od4', document.getElementById('od4').value);
+        localStorage.setItem('os4', document.getElementById('os4').value);
+        localStorage.setItem('od5', (od5int.value >= 20 && od5int.value <= 30)?od5int.value+od5dec.value:0);
+        localStorage.setItem('os5', (os5int.value >= 20 && os5int.value <= 30)?os5int.value+os5dec.value:0);
+        localStorage.setItem('Y', year);
+        localStorage.setItem('M', month);
+        localStorage.setItem('report', '球面度數');
+        label.textContent = "資料填寫完整，開啟球面度數危險度分析";
+        window.open('report.html');
+      }
+      else
+      {
+        window.scrollTo(0, 0);
+        label.textContent = "再檢查一下，確保資料沒有漏填";
+      }
     }
   </script>
   </body>
