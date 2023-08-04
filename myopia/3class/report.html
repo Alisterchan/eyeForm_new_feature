@@ -115,7 +115,8 @@
       }
       Y = parseInt(localStorage.getItem('Y'));
       M = parseInt(localStorage.getItem('M'));
-      features = [od1, od2, od3, od4, os1, os2, os3, os4,(sex=='男')?1:0, Y+M/12, glasses, Y+M/12 ];
+      features = [od1, od2, od3, od4, os1, os2, os3, os4,(sex=='男')?1:0 , glasses, Y+M/12 ];
+      alert(features):
       features = features.map(function(x) { return parseFloat(x); });
       $.ajax({
         url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
