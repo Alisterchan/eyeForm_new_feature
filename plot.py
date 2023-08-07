@@ -7,7 +7,7 @@ import pandas as pd
 import pickle
 with open('data_to_plot.pkl', 'rb') as f:
     db_version, slope_groupby, stacked_area = pickle.load(f)[report]
-
+display('剛進入plot.py', target='advice')
 import matplotlib.pyplot as plt
 def plot(sex, report):
     area = stacked_area.loc[sex].loc[3:16]
