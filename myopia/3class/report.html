@@ -93,7 +93,7 @@
       document.getElementById('medRecNo').innerHTML = localStorage.getItem('medRecNo');
       sex = document.getElementById('sex').innerHTML = localStorage.getItem('sex');
       age = document.getElementById('age').innerHTML = localStorage.getItem('age');
-      glasses=  document.getElementById('glasses').innerHTML = localStorage.getItem('glasses');
+      glasses=  document.getElementById('glasses').innerHTML = parseFloat(localStorage.getItem('glasses'));
       od1 = document.getElementById('od1').innerHTML = parseFloat(localStorage.getItem('od1')).toFixed(1);
       os1 = document.getElementById('os1').innerHTML = parseFloat(localStorage.getItem('os1')).toFixed(1);
       od2 = document.getElementById('od2').innerHTML = parseFloat(localStorage.getItem('od2')).toFixed(2);
