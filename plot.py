@@ -1,4 +1,4 @@
-from js import sex, age, y1, y2, records, suggestion, localStorage, report
+from js import sex, age, y1, y2, suggestion, localStorage, report
 if 'ale' in sex:
     sex = {'Male': '男', 'Female': '女'}[sex]
   
