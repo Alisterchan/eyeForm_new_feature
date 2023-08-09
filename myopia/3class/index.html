@@ -718,13 +718,13 @@
             document.getElementById('height').value = data[0][12];
             document.getElementById('pretermW').value = data[0][6];
             document.getElementById('pretermD').value = data[0][7];
-            if (data[0][3] == '男')
+            if (data[0][3] == '男' || data[0][3] == 'Male')
               document.getElementById('sexM').checked = true;
-            if (data[0][3] == '女')
+            if (data[0][3] == '女' || data[0][3] == 'Female')
               document.getElementById('sexF').checked = true;
-            if (data[0][4] == '單')
+            if (data[0][4] == '單' || data[0][3] == 'Single')
               document.getElementById('birth').checked = true;
-            if (data[0][4] == '多')
+            if (data[0][4] == '多' || data[0][3] == 'Multiple')
               document.getElementById('births').checked = true;
             document.getElementById('fatherD').value = data[0][8];
             document.getElementById('motherD').value = data[0][9];
