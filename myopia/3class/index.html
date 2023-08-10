@@ -750,6 +750,7 @@
             outputs['os1value'].innerHTML = (data[0][20] === '')?'❓':data[0][20].toFixed(1);
             outputs['os2value'].innerHTML = (data[0][21] === '')?'❓':data[0][21].toFixed(2);
             outputs['os3value'].innerHTML = (data[0][22] === '')?'❓':data[0][22].toFixed(2);
+            document.getElementById('dateOfBirth').oninput();
           }
           else {
             localStorage.setItem('records', JSON.stringify([]));
@@ -1016,7 +1017,7 @@
     if(check_form_integrity() & check_spherical_diopter_form_integrity())
     {
       features = [];
-
+      /*
       features.push(parseFloat(document.getElementById('od1').value));
       features.push(parseFloat(document.getElementById('od2').value));
       features.push(parseFloat(document.getElementById('od3').value));
@@ -1033,8 +1034,24 @@
       else features.push(0);
       if (document.getElementById('age').value) features.push(year + month/12);
       if (features.length == 11)
+      */
+      if (document.getElementById('sexM').checked) features.push(1);
+      if (document.getElementById('sexF').checked) features.push(0);
+      if (document.getElementById('age').value) features.push(year + month/12);
+      features.push(parseFloat(document.getElementById('od1').value));
+      features.push(parseFloat(document.getElementById('od2').value));
+      features.push(parseFloat(document.getElementById('od3').value));
+      if (document.getElementById('od4').value)
+      features.push(parseFloat(document.getElementById('od4').value));
+      features.push(parseFloat(document.getElementById('os1').value));
+      features.push(parseFloat(document.getElementById('os2').value));
+      features.push(parseFloat(document.getElementById('os3').value));
+      if (document.getElementById('os4').value)
+      features.push(parseFloat(document.getElementById('os4').value));
+      if (features.length == 10)
       $.ajax({
-        url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+        //url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+        url: 'https://aw7c8d4hh6.execute-api.ap-east-1.amazonaws.com/suggestion',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify(features),
