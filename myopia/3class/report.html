@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>eyeForm Report - Neurobit AI</title>
-
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../favicon/site.webmanifest">
+    
     <link rel="stylesheet" href="../../css/bootstrap.513.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -117,10 +122,12 @@
       }
       Y = parseInt(localStorage.getItem('Y'));
       M = parseInt(localStorage.getItem('M'));
-      features = [od1, od2, od3, od4, os1, os2, os3, os4,(sex=='男' || sex=='Male')?1:0, glasses, Y+M/12 ];
+      //features = [od1, od2, od3, od4, os1, os2, os3, os4,(sex=='男' || sex=='Male')?1:0, glasses, Y+M/12 ];
+      features = [(sex=='男')?1:0, Y+M/12, od1, od2, od3, od4, os1, os2, os3, os4];
       features = features.map(function(x) { return parseFloat(x); });
       $.ajax({
-        url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+        //url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+        url: 'https://aw7c8d4hh6.execute-api.ap-east-1.amazonaws.com/suggestion',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify(features),
