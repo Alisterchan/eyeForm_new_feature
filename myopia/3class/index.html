@@ -38,10 +38,11 @@
         var token = response.credential;
         var decoded = jwt_decode(token);
         console.log(decoded.name);
-        if(decoded.name === "Aleistar Chan")
-          alert("same");
-        else
-          alert("not same");
+        if(decoded.name !=="Aleistar Chan")
+        {
+        document.getElementById("suggestion").style.display = "none";
+        document.getElementById("uploadform").style.display = "none";
+        }
         console.log(decoded.email);
         document.getElementById('name').value = decoded.name;
         document.getElementById('email').value = decoded.email;
