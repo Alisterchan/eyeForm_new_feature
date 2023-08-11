@@ -48,10 +48,12 @@
         document.getElementById('email').value = decoded.email;
         $('#staticBackdrop').modal('hide');
         $.ajax({
-          url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+          //url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
+          url: 'https://aw7c8d4hh6.execute-api.ap-east-1.amazonaws.com/suggestion',
           type: 'POST',
           dataType: 'json',
-          data: JSON.stringify([1,2,3,4,5,6,7,8,9,10,11]),
+          //data: JSON.stringify([1,2,3,4,5,6,7,8,9,10,11]),
+          data: JSON.stringify([1,2,3,4,5,6,7,8,9,10]),
           complete: function(data) {
             console.log(data['responseText']);
           }
