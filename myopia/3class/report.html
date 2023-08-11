@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>eyeForm Report - Neurobit AI</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
-    <link rel="manifest" href="../../favicon/site.webmanifest">
-    
+
     <link rel="stylesheet" href="../../css/bootstrap.513.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/jquery-3.3.1.min.js"></script>
@@ -66,8 +61,8 @@
       </tbody>
       <tbody class="table-group-divider">
         <tr>
-          <th scope="row">處置建議：</th>
-          <td><span id="suggestion"></span></td>
+          <th scope="row">處置建議：<span id="suggestion"></span></th>
+          <td></td>
           <td></td>
         </tr>
         <tr>
@@ -76,7 +71,7 @@
           <td><span id="now"></span></td>
         </tr>
         <tr>
-          <td colspan="3" align="center"><div id="plot"></div></td>
+          <td colspan="3" align="left"><div id="advice"></div></td>
         </tr>
         <tr>
           <td colspan="3" align="center"><div id="plot"></div></td>
@@ -98,7 +93,6 @@
       document.getElementById('medRecNo').innerHTML = localStorage.getItem('medRecNo');
       sex = document.getElementById('sex').innerHTML = localStorage.getItem('sex');
       age = document.getElementById('age').innerHTML = localStorage.getItem('age');
-      //glasses=  document.getElementById('glasses').innerHTML = localStorage.getItem('glasses');
       od1 = document.getElementById('od1').innerHTML = parseFloat(localStorage.getItem('od1')).toFixed(1);
       os1 = document.getElementById('os1').innerHTML = parseFloat(localStorage.getItem('os1')).toFixed(1);
       od2 = document.getElementById('od2').innerHTML = parseFloat(localStorage.getItem('od2')).toFixed(2);
@@ -120,11 +114,9 @@
       }
       Y = parseInt(localStorage.getItem('Y'));
       M = parseInt(localStorage.getItem('M'));
-      //features = [od1, od2, od3, od4, os1, os2, os3, os4,(sex=='男' || sex=='Male')?1:0, glasses, Y+M/12 ];
       features = [(sex=='男')?1:0, Y+M/12, od1, od2, od3, od4, os1, os2, os3, os4];
       features = features.map(function(x) { return parseFloat(x); });
       $.ajax({
-        //url: 'https://rlneiq30aa.execute-api.ap-northeast-1.amazonaws.com/DREDGE_LINE/Nautiluz-test',
         url: 'https://aw7c8d4hh6.execute-api.ap-east-1.amazonaws.com/suggestion',
         type: 'POST',
         dataType: 'json',
@@ -133,19 +125,13 @@
           suggestion = data['responseText'];
           console.log(suggestion);
           if (suggestion == '不處置') $('#suggestion').html('無需處置');
-          else if (suggestion == '低散瞳劑')$('#suggestion').html('點低濃度散瞳劑');
-          else if (suggestion == '中散瞳劑')$('#suggestion').html('點中濃度散瞳劑');
-          else if (suggestion == '高散瞳劑')$('#suggestion').html('點高濃度散瞳劑');
-          else if (suggestion == '一般眼鏡')$('#suggestion').html('配戴一般眼鏡');
-          else if (suggestion == '一般眼鏡＋中散瞳劑')$('#suggestion').html('配戴一般眼鏡+點中濃度散瞳劑');
-          else if (suggestion == '角膜塑型片') $('#suggestion').html('配戴角膜塑型片');
-          else $('#suggestion').html('無需處置');
+          if (suggestion == '一般眼鏡') $('#suggestion').html('配戴一般眼鏡');
+          if (suggestion == '散瞳劑') $('#suggestion').html('點散瞳劑');
+          if (suggestion == '一般眼鏡散瞳劑') $('#suggestion').html('配戴一般眼鏡、點散瞳劑');
+          if (suggestion == '角膜塑型片') $('#suggestion').html('配戴角膜塑型片');
         }
       });
       records = localStorage.getItem('records');
-      console.log('xxxxxxxxxxxxxxxxxxxxx');
-      console.log(records);
-      console.log('xxxxxxxxxxxxxxxxxxxxx');
     </script>
     <py-script src="../../plot.py"></py-script>
     <py-script src="../../table.py"></py-script>
