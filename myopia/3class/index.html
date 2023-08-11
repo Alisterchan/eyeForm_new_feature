@@ -733,17 +733,17 @@
               document.getElementById('births').checked = true;
             document.getElementById('fatherD').value = data[0][8];
             document.getElementById('motherD').value = data[0][9];
-            /*
+            
             if (data[0][13] == 'G')
-              document.getElementById('od0').checked = true;*/
+              document.getElementById('od0').checked = true;
             document.getElementById('od1').value = data[0][14];
             document.getElementById('od2').value = data[0][15];
             document.getElementById('od3').value = data[0][16];
             document.getElementById('od4').value = data[0][17];
             document.getElementById('od5int').value = parseInt(data[0][18]);
             document.getElementById('od5dec').value = (data[0][18] - parseInt(data[0][18])).toFixed(2).toString().substring(1);
-            /*if (data[0][19] == 'G')
-              document.getElementById('os0').checked = true;*/
+            if (data[0][19] == 'G')
+              document.getElementById('os0').checked = true;
             document.getElementById('os1').value = data[0][20];
             document.getElementById('os2').value = data[0][21];
             document.getElementById('os3').value = data[0][22];
