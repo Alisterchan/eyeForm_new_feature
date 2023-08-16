@@ -1,4 +1,4 @@
-from js import sex, age, y1, y2, records, suggestion, localStorage, report
+from js import sex, age, y1, y2, records, suggestion, localStorage, report , language_type
 if 'ale' in sex:
     sex = {'Male': '男', 'Female': '女'}[sex]
   
@@ -25,10 +25,56 @@ def plot(sex, report):
     plt.title(f"Trend of {MorF} Children in Taiwan", fontsize=12)
 
 risk = [...] * 4
-risk[0] = f'{report}在年齡正常範圍內，屬低風險，建議一年定期檢查，無潛在近視發展狀況。'
-risk[1] = f'{report}稍長於年齡正常範圍，屬中風險，建議一年定期檢查，需改變生活型態及減少外在環境影響。'
-risk[2] = f'{report}長於年齡正常範圍，屬高風險，建議半年回診檢查，需改變生活型態及減少外在環境影響（例：電腦及手機使用時間需要注意並適度休息、戶外活動需要配戴太陽眼鏡防藍光、UV），並搭配葉黃素或魚油服用。'
-risk[3] = f'{report}甚長於年齡正常範圍，屬極高風險，有極高近視惡化發展可能，建議3個月回診檢查，需改變生活型態及減少外在環境影響（例：電腦及手機使用時間需要注意並適度休息、避免坐姿不正，戶外活動需要配戴太陽眼鏡防藍光、UV），搭配葉黃素或魚油服用，並搭配積極治療控制。'
+eye_word = [...] * 2
+
+if language_type== 0 :
+    if report == '軸長':
+        eye_word[0]= '右眼軸長'
+        eye_word[1]= '左眼軸長'
+    if report == '球面度數':
+        eye_word[0]= '右眼球面度數'
+        eye_word[1]= '左眼球面度數'
+    risk[0] = f'在年齡正常範圍內，屬低風險，建議一年定期檢查，無潛在近視發展狀況。'
+    risk[1] = f'稍長於年齡正常範圍，屬中風險，建議一年定期檢查，需改變生活型態及減少外在環境影響。'
+    risk[2] = f'長於年齡正常範圍，屬高風險，建議半年回診檢查，需改變生活型態及減少外在環境影響（例：電腦及手機使用時間需要注意並適度休息、戶外活動需要配戴太陽眼鏡防藍光、UV），並搭配葉黃素或魚油服用。'
+    risk[3] = f'甚長於年齡正常範圍，屬極高風險，有極高近視惡化發展可能，建議3個月回診檢查，需改變生活型態及減少外在環境影響（例：電腦及手機使用時間需要注意並適度休息、避免坐姿不正，戶外活動需要配戴太陽眼鏡防藍光、UV），搭配葉黃素或魚油服用，並搭配積極治療控制。'
+    samples_not_enought = '該年齡收案不足，無法提供具有統計意義之危險度分級。'
+elif language_type== 1:
+    if report == '軸長':
+        eye_word[0] = 'Axial length of right eye'
+        eye_word[1] = 'Axial length of left eye'
+    if report == '球面度數':
+        eye_word[0] = 'Spherical diopter of right eye'
+        eye_word[1] = 'Spherical diopter of left eye'
+    risk[0] = f' within the normal age range, it is considered low risk. Regular annual check-ups are recommended, and there is no indication of potential nearsightedness development.'
+    risk[1] = f' slightly beyond the normal age range, it is considered moderate risk. Regular annual check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences.'
+    risk[2] = f' beyond the normal age range, it is considered high risk. Biannual follow-up check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences (e.g., being mindful of screen time for computers and phones and taking breaks, wearing sunglasses to protect against blue light and UV rays during outdoor activities). Additionally, consider supplementing with lutein or fish oil.'
+    risk[3] = f' far beyond the normal age range, it is considered extremely high risk with a significant potential for severe myopia progression. Quarterly follow-up check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences (e.g., being mindful of screen time for computers and phones and taking breaks, maintaining proper posture, wearing sunglasses to protect against blue light and UV rays during outdoor activities). Additionally, consider supplementing with lutein or fish oil, and adopting proactive treatment measures for control.'
+    samples_not_enought = 'The number of cases within this age group is insufficient to provide statistically significant risk classification.'
+elif language_type== 2:
+    if report == '軸長':
+        eye_word[0]= '右眼轴长'
+        eye_word[1]= '左眼轴长'
+    if report == '球面度數':
+        eye_word[0]= '左眼球面度数'
+        eye_word[1]= '左眼球面度数'
+    risk[0] = f'在年龄正常范围内，属低风险，建议一年定期检查，无潜在近视发展状况。'
+    risk[1] = f'稍长于年龄正常范围，属中风险，建议一年定期检查，需改变生活型态及减少外在环境影响。'
+    risk[2] = f'长于年龄正常范围，属高风险，建议半年回诊检查，需改变生活型态及减少外在环境影响（例：电脑及手机使用时间需要注意并适度休息、户外活动需要配戴太阳眼镜防蓝光、UV ），并搭配叶黄素或鱼油服用。'
+    risk[3] = f'甚长于年龄正常范围，属极高风险，有极高近视恶化发展可能，建议3个月回诊检查，需改变生活型态及减少外在环境影响（例：电脑及手机使用时间需要注意并适度休息、避免坐姿不正，户外活动需要配戴太阳眼镜防蓝光、UV），搭配叶黄素或鱼油服用，并搭配积极治疗控制。'
+    samples_not_enought = '该年龄收案不足，无法提供具有统计意义之危险度分级。'
+else :
+    if report == '軸長':
+        eye_word[0] = 'Axial length of right eye'
+        eye_word[1] = 'Axial length of left eye'
+    if report == '球面度數':
+        eye_word[0] = 'Spherical diopter of right eye'
+        eye_word[1] = 'Spherical diopter of left eye'
+    risk[0] = f' within the normal age range, it is considered low risk. Regular annual check-ups are recommended, and there is no indication of potential nearsightedness development.'
+    risk[1] = f' slightly beyond the normal age range, it is considered moderate risk. Regular annual check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences.'
+    risk[2] = f' beyond the normal age range, it is considered high risk. Biannual follow-up check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences (e.g., being mindful of screen time for computers and phones and taking breaks, wearing sunglasses to protect against blue light and UV rays during outdoor activities). Additionally, consider supplementing with lutein or fish oil.'
+    risk[3] = f' far beyond the normal age range, it is considered extremely high risk with a significant potential for severe myopia progression. Quarterly follow-up check-ups are recommended, along with the need to adjust lifestyle and minimize external environmental influences (e.g., being mindful of screen time for computers and phones and taking breaks, maintaining proper posture, wearing sunglasses to protect against blue light and UV rays during outdoor activities). Additionally, consider supplementing with lutein or fish oil, and adopting proactive treatment measures for control.'
+    samples_not_enought = 'The number of cases within this age group is insufficient to provide statistically significant risk classification.'
 Risk = {}
 
 import re
@@ -39,7 +85,7 @@ def x(age):
 if round(x(age)) in range(3, 17):
     if report == '軸長':
         p0, p50, p75, p90, p100 = stacked_area.loc[sex].loc[round(x(age))]
-        for y, eye in (y1, '右眼'), (y2, '左眼'):
+        for y, eye in (y1, eye_word[0]), (y2, eye_word[1]):
             if y < p50:
                 display(f'{eye}{risk[0]}', target='advice')
                 localStorage.setItem(eye, 0)
@@ -54,7 +100,7 @@ if round(x(age)) in range(3, 17):
                 localStorage.setItem(eye, 3)
     if report == '球面度數':
         p100, p50, p25, p10, p0 = stacked_area.loc[sex].loc[round(x(age))]
-        for y, eye in (y1, '右眼'), (y2, '左眼'):
+        for y, eye in (y1, eye_word[0]), (y2, eye_word[1]):
             if y > p50:
                 display(f'{eye}{risk[0]}', target='advice')
                 localStorage.setItem(eye, 0)
@@ -68,7 +114,7 @@ if round(x(age)) in range(3, 17):
                 display(f'{eye}{risk[3]}', target='advice')
                 localStorage.setItem(eye, 3)
 else:
-    display('該年齡收案不足，無法提供具有統計意義之危險度分級。', target='advice')
+    display(samples_not_enought, target='advice')
     localStorage.setItem('右眼', '')
     localStorage.setItem('左眼', '')
 
