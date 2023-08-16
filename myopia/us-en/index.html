@@ -756,7 +756,7 @@
             outputs['os1value'].innerHTML = (data[0][20] === '')?'❓':data[0][20].toFixed(1);
             outputs['os2value'].innerHTML = (data[0][21] === '')?'❓':data[0][21].toFixed(2);
             outputs['os3value'].innerHTML = (data[0][22] === '')?'❓':data[0][22].toFixed(2);
-            document.getElementById('os5dec').oninput();
+            document.getElementById('dateOfBirth').oninput();
           }
           else {
             localStorage.setItem('records', JSON.stringify([]));
