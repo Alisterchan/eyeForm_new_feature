@@ -137,12 +137,12 @@
                 <div class="row">
                   <div class="col-6 form-group">
                     <label class="form-label" for="dateOfVisit">Date of visit</label>
-                    <input type="date" class="form-control" name="dateOfVisit" id="dateOfVisit">
+                    <input type="date" class="form-control" name="dateOfVisit" id="dateOfVisit" intl="en">
                     <span class="warning_msg" id="dateOfVisit_warning"></span>
                   </div>
                   <div class="col-6 form-group">
                     <label class="form-label" for="dateOfBirth">Date of birth</label>
-                    <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth">
+                    <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" intl="en">
                     <span class="warning_msg" id="dateOfBirth_warning"></span>
                   </div>
                 </div>
@@ -860,7 +860,7 @@
       if(check_value_func(document.getElementById('medRecNo').value))
           { 
             check=false;
-            (document.getElementById('medRecNo_warning')).textContent="⚠️必填";
+            (document.getElementById('medRecNo_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -869,7 +869,7 @@
       if(check_value_func(document.getElementById('site').value))
           { 
             check=false;
-            (document.getElementById('site_warning')).textContent="⚠️必填";
+            (document.getElementById('site_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -878,7 +878,7 @@
           if (isNaN(Date.parse(dateOfVisit.value)))
       { 
             check=false;
-            (document.getElementById('dateOfVisit_warning')).textContent="⚠️必填";
+            (document.getElementById('dateOfVisit_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -887,7 +887,7 @@
           if (isNaN(Date.parse(dateOfBirth.value)))
       { 
             check=false;
-            (document.getElementById('dateOfBirth_warning')).textContent="⚠️必填";
+            (document.getElementById('dateOfBirth_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -914,7 +914,7 @@
       if(check_value_func(document.getElementById('od4').value))
           { 
             check=false;
-            (document.getElementById('od4ID_warning')).textContent="⚠️必填";
+            (document.getElementById('od4ID_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -923,7 +923,7 @@
       if(check_value_func(document.getElementById('os4').value))
           { 
             check=false;
-            (document.getElementById('os4ID_warning')).textContent="⚠️必填";
+            (document.getElementById('os4ID_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -943,7 +943,7 @@
       if(check_value_func(document.getElementById('od5int').value))
       { 
             check=false;
-            (document.getElementById('od5int_warning')).textContent="⚠️必填";
+            (document.getElementById('od5int_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -952,7 +952,7 @@
       if(check_value_func(document.getElementById('os5int').value))
       { 
             check=false;
-            (document.getElementById('os5int_warning')).textContent="⚠️必填";
+            (document.getElementById('os5int_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -968,7 +968,7 @@
       if(check_value_func(document.getElementById('medRecNo').value))
           { 
             check=false;
-            (document.getElementById('medRecNo_warning')).textContent="⚠️必填";
+            (document.getElementById('medRecNo_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -977,7 +977,7 @@
       if(check_value_func(document.getElementById('site').value))
           { 
             check=false;
-            (document.getElementById('site_warning')).textContent="⚠️必填";
+            (document.getElementById('site_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -987,7 +987,7 @@
       if (isNaN(Date.parse(dateOfVisit.value)))
       { 
             check=false;
-            (document.getElementById('dateOfVisit_warning')).textContent="⚠️必填";
+            (document.getElementById('dateOfVisit_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -996,7 +996,7 @@
           if (isNaN(Date.parse(dateOfBirth.value)))
       { 
             check=false;
-            (document.getElementById('dateOfBirth_warning')).textContent="⚠️必填";
+            (document.getElementById('dateOfBirth_warning')).textContent="⚠️Required field";
           }
       else
           {
@@ -1008,7 +1008,7 @@
       if(!hasChecked)
           { 
             check=false;
-            (document.getElementById('sex_warning')).textContent="⚠️必填";
+            (document.getElementById('sex_warning')).textContent="⚠️Required field";
           }
       else
           {
