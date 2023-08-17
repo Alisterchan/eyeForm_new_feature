@@ -150,7 +150,8 @@
                 <div class="row">
                   <div class="col-3 form-group">
                     <label class="form-label" for="age">实岁</label>
-                    <input type="text" class="form-control" name="age" id="age" disabled>
+                    <input type="text" class="form-control" name="age" id="age" disabled style="display:none;">
+                    <input type="text" class="form-control" name="age_show" id="age_show" disabled>
                   </div>
                   <div class="col-3 form-group">
                     <label class="form-label" for="height">身高(cm)</label>
@@ -783,7 +784,8 @@
           year--;
           month += 12;
         }
-        document.getElementById('age').value = year + '岁' + month + '个月';
+        document.getElementById('age').value = year + '歲' + month + '個月';
+        document.getElementById('age_show').value= year + '岁' + month + '个月';
       }
     }
     dateOfBirth.oninput = function() {
@@ -801,7 +803,8 @@
           year--;
           month += 12;
         }
-        document.getElementById('age').value = year + '岁' + month + '个月';
+        document.getElementById('age').value = year + '歲' + month + '個月';
+        document.getElementById('age_show').value= year + '岁' + month + '个月';
       }
     }
 
