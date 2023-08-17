@@ -111,8 +111,8 @@
       os5 = document.getElementById('os5').innerHTML = parseFloat(localStorage.getItem('os5')).toFixed(2);
       report = localStorage.getItem('report');
       var age_content = document.getElementById("age").textContent;
-      document.getElementById("age_tr").textContent=age_content.replace("歲" , "y");
-      document.getElementById("age_tr").textContent=document.getElementById("age_tr").textContent.replace("個月" , "m");
+      document.getElementById("age_tr").textContent=age_content.textContent;
+      document.getElementById("age_tr").textContent=document.getElementById("age_tr").textContent;
       var sex_content = document.getElementById("sex").textContent;
       if( sex_content=="男" || sex_content=="Male")
         document.getElementById("sex_tr").textContent="Male"
