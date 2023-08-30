@@ -22,10 +22,10 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
-      packages = ["pandas", "matplotlib"]
+      packages = ["pandas", "matplotlib" , "Jinja2"]
 
       [[fetch]]
-      files = ["./data_to_plot.pkl"]
+      files = ["./data_to_plot.pkl","msyhbd.ttc","msyh.ttc"]
     </py-config>
   </head>
   <body class="p-3 m-0 border-0 bd-example">
@@ -109,6 +109,17 @@
       os4 = document.getElementById('os4').innerHTML = parseFloat(localStorage.getItem('os4'));
       od5 = document.getElementById('od5').innerHTML = parseFloat(localStorage.getItem('od5')).toFixed(2);
       os5 = document.getElementById('os5').innerHTML = parseFloat(localStorage.getItem('os5')).toFixed(2);
+      
+      if(od5 == 19.5)
+        document.getElementById("od5").textContent="< 20";
+      else  if(od5 == 30.5)
+        document.getElementById("od5").textContent="> 30";
+
+      if(os5 == 19.5)
+        document.getElementById("os5").textContent="< 20";
+      else  if(os5 == 30.5)
+        document.getElementById("os5").textContent="> 30";
+
       report = localStorage.getItem('report');
       var age_content = document.getElementById("age").textContent;
       document.getElementById("age_tr").textContent=age_content.replace("歲" , "岁");
@@ -118,6 +129,7 @@
         document.getElementById("sex_tr").textContent="男"
       else
       document.getElementById("sex_tr").textContent="女"
+
       if (report == '軸長') {
         y1 = parseFloat(od5);
         y2 = parseFloat(os5);
@@ -150,6 +162,7 @@
       });
       language_type=2;
       records = localStorage.getItem('records');
+      var records=[[1,"S001","2001-01-20T16:00:00.000Z","Male","Single","","","",-6,-5,"2010-08-31T16:00:00.000Z","9歲7個月",138,"",0.7,-2.5,-0.75,10,25.14,"",0.5,-3.25,-1.25,90,25.52]];
     </script>
     <py-script src="../../plot.py"></py-script>
     <py-script src="../../table.py"></py-script>
