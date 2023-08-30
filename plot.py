@@ -164,8 +164,8 @@ if y1 != "" and slope_groupby[sex].get(suggestion):
 if y2 != "" and slope_groupby[sex].get(suggestion):
     plt.scatter(x(age) + 1, y2 + slope_groupby[sex][suggestion], color='blue', label='OS in 1 yr', marker='*')
 
-#import json
-#records = json.loads(records)
+import json
+records = json.loads(records)
 od, os = (18, 24) if report == '軸長' else (15, 21)
 for record in records:
     if record[od] != "":
