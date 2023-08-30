@@ -1,14 +1,34 @@
 from js import sex, age, y1, y2, records, suggestion, localStorage, report , language_type
 if 'ale' in sex:
     sex = {'Male': '男', 'Female': '女'}[sex]
-  
+#print(language_type)
 import pandas as pd
 
 import pickle
 with open('data_to_plot.pkl', 'rb') as f:
     db_version, slope_groupby, stacked_area = pickle.load(f)[report]
 
+
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+#font_path = 'TaipeiSansTCBeta-Bold.ttf'
+if language_type== 0 :
+    font_path = 'msjhbd.ttc'
+    font_paht_s = "msjh.ttc"
+elif language_type== 2:
+    font_path = 'msyhbd.ttc'
+    font_paht_s = "msyh.ttc"
+else:
+    font_path = ''
+    font_paht_s = "" 
+#print("PATH IS " + font_path)
+custom_font = FontProperties(fname=font_path)
+custom_font_s = FontProperties(fname=font_paht_s)
+
+plt.figure(figsize=(8, 6))
+
+
 def plot(sex, report):
     area = stacked_area.loc[sex].loc[3:16]
     MorF = {'男': 'Male', '女': 'Female'}[sex]
@@ -22,7 +42,16 @@ def plot(sex, report):
         plt.fill_between(area.index, area['P25'], area['P50'], color='yellow', alpha=0.6, label='25~50%')
         plt.fill_between(area.index, area['P10'], area['P25'], color='orange', alpha=0.6, label='10~25%')
         plt.fill_between(area.index, area['P0'], area['P10'], color='red', alpha=0.6, label='0~10%')
-    plt.title(f"Trend of {MorF} Children in Taiwan", fontsize=12)
+    #plt.title(f"Trend of {MorF} Children in Taiwan  {db_version}", fontsize=12)
+    if language_type== 0 :
+        plt.title(f"台灣{sex}童趨勢", fontproperties=custom_font, fontsize=16)
+    elif language_type== 1:
+        plt.title(f"Trend of {MorF} Children in Taiwan", fontsize=16)
+    elif language_type== 2:
+        plt.title(f"台湾{sex}童趋势", fontproperties=custom_font, fontsize=16)
+    else :
+        plt.title(f"Trend of {MorF} Children in Taiwan", fontsize=16)
+
 
 risk = [...] * 4
 eye_word = [...] * 2
@@ -118,36 +147,63 @@ else:
     localStorage.setItem('右眼', '')
     localStorage.setItem('左眼', '')
 
+#plt.figure(figsize=(7.5, 7.5))
 plot(sex, report)
 if y1 != "":
-    plt.scatter(x(age), y1, color='red', label='OD')
+    if y1 == 0 :
+        y1 = 19.5
+    plt.scatter(x(age), y1, color='red', label='OD' , marker='D')
+    #print("od is : " + str(y1 ))
 if y2 != "":
-    plt.scatter(x(age), y2, color='blue', label='OS')
+    if y2 == 0 :
+        y2 = 19.5
+    plt.scatter(x(age), y2, color='blue', label='OS' , marker='D')
+    #print("os is : " + str(y2))
 if y1 != "" and slope_groupby[sex].get(suggestion):
     plt.scatter(x(age) + 1, y1 + slope_groupby[sex][suggestion], color='red', label='OD in 1 yr', marker='*')
 if y2 != "" and slope_groupby[sex].get(suggestion):
     plt.scatter(x(age) + 1, y2 + slope_groupby[sex][suggestion], color='blue', label='OS in 1 yr', marker='*')
 
-import json
-records = json.loads(records)
+#import json
+#records = json.loads(records)
 od, os = (18, 24) if report == '軸長' else (15, 21)
 for record in records:
     if record[od] != "":
-        plt.scatter(x(record[11]), record[od], color='red', marker='.')
+        plt.scatter(x(record[11]), record[od], color='red', marker='.' , label='OD in past')
+        #print("od is : " + str(record[od]) )
     if record[os] != "":
-        plt.scatter(x(record[11]), record[os], color='blue', marker='.')
-
+        plt.scatter(x(record[11]), record[os], color='blue', marker='.', label='OS in past')
+        #print("os is : " + str(record[os]))
+plt.plot(3, 19.5 , linestyle='none' , marker='None', alpha=0, label=db_version)
 if report == '軸長':
-    plt.legend(loc='lower right')
+    plt.legend(loc='center right' , bbox_to_anchor=(1.19, 0.25),fontsize=8)
 if report == '球面度數':
-    plt.legend(loc='lower left')
+    plt.legend(loc='center right' , bbox_to_anchor=(1.19, 0.25),fontsize=8)
 plt.xticks(range(3, 17 if x(age) + 1 <= 16 else int(x(age)) + 2))
 plt.yticks(range(20, 30) if report == '軸長' else range(-8, 7))
-plt.xlabel('Age', fontsize=12)
-plt.ylabel('Axial Length' if report == '軸長' else 'SPH', fontsize=12)
+if language_type== 0 :
+    plt.xlabel("年齡 (歲)", fontproperties=custom_font_s, fontsize=12)
+elif language_type== 2:
+    plt.xlabel("年龄 (岁)", fontproperties=custom_font_s, fontsize=12)
+else :
+    plt.xlabel("Age (years)", fontsize=12)
+#plt.xlabel('Age', fontsize=12)
+if language_type== 0 :
+    plt.ylabel('軸長 (mm)' if report == '軸長' else '球面度數 (度)', fontproperties=custom_font_s, fontsize=12)
+elif language_type== 2:
+    plt.ylabel('轴长 (mm)' if report == '軸長' else '球面度数 (度)', fontproperties=custom_font_s, fontsize=12)
+else :
+    plt.ylabel('Axial Length (mm)' if report == '軸長' else 'SPH (degrees)', fontsize=12)
+#plt.ylabel('Axial Length' if report == '軸長' else 'SPH', fontsize=12)
+
 plt.margins(0)
+plt.subplots_adjust(left=0.1, right=0.85, bottom=0.1, top=0.9, wspace=0.8, hspace=0.2)
 if report == '軸長':
-    plt.text(16 if x(age) + 1 < 16 else x(age) + 1, 18.8 if sex=='女' else 19.2, f'{db_version}', horizontalalignment='right', fontsize=8)
+    plt.ylim(19.5, 30.5)
+    plt.xlim(3, 16)
+    plt.text(16 if x(age) + 1 < 16 else x(age) + 1, 18.8 if sex=='女' else 19.2, f'', horizontalalignment='right', fontsize=8)
 if report == '球面度數':
-    plt.text(16 if x(age) + 1 < 16 else x(age) + 1, -8.5 if sex=='女' else -10.5, f'{db_version}', horizontalalignment='right', fontsize=8)
+    plt.ylim(-8.5, 7.5)
+    plt.xlim(3, 16)
+    plt.text(16 if x(age) + 1 < 16 else x(age) + 1, -8.5 if sex=='女' else -10.5, f'', horizontalalignment='right', fontsize=8)
 display(plt, target='plot')
