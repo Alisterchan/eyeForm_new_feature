@@ -38,7 +38,7 @@ else :
     table['OS'] = [f'{y2:.2f}']
 
 import json
-records = json.loads(json_string)
+records = json.loads(records)
 od, os = (18, 24) if report == '軸長' else (15, 21)
 for record in records:
     if record[od] or record[os]:
