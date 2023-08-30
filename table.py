@@ -37,15 +37,8 @@ elif y2 == 30.5 :
 else :
     table['OS'] = [f'{y2:.2f}']
 
-#print(table['Age　'] )
-#print("*********************")
-#print(type(records))
-
-#print(type(records))
-
 import json
-#json_string = str(records)
-#records = json.loads(json_string)
+records = json.loads(json_string)
 od, os = (18, 24) if report == '軸長' else (15, 21)
 for record in records:
     if record[od] or record[os]:
