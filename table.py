@@ -86,6 +86,7 @@ else:
 """
 df.columns = df.loc['Age　']
 df = df.drop(index='Age　')
+"""
 styled_df = df.style.set_properties(**{
 'background-color': 'white', 
 'color': 'black',
@@ -94,7 +95,7 @@ styled_df = df.style.set_properties(**{
 'border-width': '2px',
 'padding': '2px'
 })
-
+"""
 #display(styled_df, target='table')
 
 display(df, target='table')
