@@ -86,6 +86,8 @@ else:
 """
 df.columns = df.loc['Age　']
 df = df.drop(index='Age　')
+print(type(df))
+print(df.info())
 """
 styled_df = df.style.set_properties(**{
 'background-color': 'white', 
