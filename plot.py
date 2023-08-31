@@ -167,12 +167,22 @@ if y2 != "" and slope_groupby[sex].get(suggestion):
 import json
 records = json.loads(records)
 od, os = (18, 24) if report == '軸長' else (15, 21)
+odp_first=True
+osp_first=True
 for record in records:
     if record[od] != "":
-        plt.scatter(x(record[11]), record[od], color='red', marker='.' , label='OD in past')
+        if odp_first :
+            plt.scatter(x(record[11]), record[od], color='red', marker='.' , label='OD in past')
+            odp_first=False
+        else :
+            plt.scatter(x(record[11]), record[od], color='red', marker='.')
         #print("od is : " + str(record[od]) )
     if record[os] != "":
-        plt.scatter(x(record[11]), record[os], color='blue', marker='.', label='OS in past')
+        if osp_first :
+            plt.scatter(x(record[11]), record[os], color='blue', marker='.', label='OS in past')
+            osp_first=False
+        else :
+            plt.scatter(x(record[11]), record[os], color='blue', marker='.')
         #print("os is : " + str(record[os]))
 plt.plot(3, 19.5 , linestyle='none' , marker='None', alpha=0, label=db_version)
 if report == '軸長':

@@ -59,17 +59,17 @@ for record in records:
         
 import pandas as pd
 df = pd.DataFrame(table)
-"""
+
 if report == '軸長':
     new_column_names = {'OD': 'OD(mm)　', 'OS': 'OS(mm)　'}
 elif language_type == 0 or language_type == 2:
     new_column_names = {'OD': 'OD(度)　', 'OS': 'OS(度)　'}
 else :
     new_column_names = {'OD': 'OD(degrees)　', 'OS': 'OS(degrees)　'}
+
 df.rename(columns=new_column_names, inplace=True)
-"""
 df = df.T
-"""
+
 if language_type == 0 :
     new_index_names  = {'Age　': '年齡　'}
     df.rename(index=new_index_names, inplace=True)
@@ -83,12 +83,19 @@ elif  language_type == 2:
 else:
     df.columns = df.loc['Age　']
     df = df.drop(index='Age　')
-"""
-df.columns = df.loc['Age　']
-df = df.drop(index='Age　')
-print(type(df))
-print(df.info())
-"""
+
+duplicated_columns = df.columns[df.columns.duplicated()]
+if not duplicated_columns.empty:
+    renamed_columns  = df.columns
+    for col_name  in duplicated_columns:
+        count = 1
+        while col_name  in renamed_columns:
+            renamed_columns = renamed_columns.to_list()
+            renamed_columns[renamed_columns.index(col_name)] = f"{col_name}_v{count}"
+            renamed_columns = pd.Index(renamed_columns)
+            count += 1
+    df.columns = renamed_columns
+
 styled_df = df.style.set_properties(**{
 'background-color': 'white', 
 'color': 'black',
@@ -97,7 +104,5 @@ styled_df = df.style.set_properties(**{
 'border-width': '2px',
 'padding': '2px'
 })
-"""
-#display(styled_df, target='table')
-print(df)
-display(df, target='table')
+
+display(styled_df, target='table')

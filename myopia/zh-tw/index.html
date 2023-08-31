@@ -777,13 +777,15 @@
     site.onchange = function() {
       localStorage.clear();
       if (document.getElementById('email').value)
+      {
+      (document.getElementById('site_info')).textContent="院所(讀取中...)";
       $.ajax({
         url: `https://script.google.com/macros/s/AKfycby1eLmiT7l1x7UQ6hB2KxHTlYmXpkm87t3Zn4NH5A2Btqo-knqaC5NzLT09X5mo6Mss/exec?medRecNo=${medRecNo.value}&site=${site.value}`,
         type: 'GET',
         dataType: 'json',
         success: function(data) {
           if (typeof data === 'object') {
-            (document.getElementById('site_info')).textContent="院所(讀取中...)";
+            (document.getElementById('site_info')).textContent="院所(讀取完成!)";
             localStorage.setItem('records', JSON.stringify(data));
             document.getElementById('caseNo').value = data[0][0];
             document.getElementById('dateOfBirth').value = new Date(Date.parse(data[0][2])+8*60*60*1000).toISOString().split('T')[0];
@@ -826,7 +828,6 @@
             outputs['os3value'].innerHTML = (data[0][22] === '')?'❓':data[0][22].toFixed(2);
             document.getElementById('dateOfBirth').oninput();
             document.getElementById('os5dec').oninput();
-            (document.getElementById('site_info')).textContent="院所(讀取完成!)";
           }
           else {
             (document.getElementById('site_info')).textContent="院所";
@@ -835,6 +836,7 @@
           }
         }
       });
+      }
     }
 
     var dateOfVisit = document.getElementById('dateOfVisit');
