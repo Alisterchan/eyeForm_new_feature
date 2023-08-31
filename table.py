@@ -59,6 +59,7 @@ for record in records:
         
 import pandas as pd
 df = pd.DataFrame(table)
+"""
 if report == '軸長':
     new_column_names = {'OD': 'OD(mm)　', 'OS': 'OS(mm)　'}
 elif language_type == 0 or language_type == 2:
@@ -66,7 +67,9 @@ elif language_type == 0 or language_type == 2:
 else :
     new_column_names = {'OD': 'OD(degrees)　', 'OS': 'OS(degrees)　'}
 df.rename(columns=new_column_names, inplace=True)
+"""
 df = df.T
+"""
 if language_type == 0 :
     new_index_names  = {'Age　': '年齡　'}
     df.rename(index=new_index_names, inplace=True)
@@ -80,7 +83,9 @@ elif  language_type == 2:
 else:
     df.columns = df.loc['Age　']
     df = df.drop(index='Age　')
-
+"""
+df.columns = df.loc['Age__']
+df = df.drop(index='Age__')
 styled_df = df.style.set_properties(**{
 'background-color': 'white', 
 'color': 'black',

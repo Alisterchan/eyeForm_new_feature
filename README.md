@@ -8,10 +8,10 @@
 ## 2. Database:
 [eyeForm/myopia.db.xlsx](https://docs.google.com/spreadsheets/d/1kBLwr1Lxec6yi5wEET5opkSKt_TD3cVQjICWlDyHS4o/edit#gid=1477633965) from Google Sheets for myopia website version
 ## 3. eyeForm for AI test website form
-- Default (EN) version for [EN: eyeForm - AI test](https://neurobit-ai.github.io/eyeForm/myopia/)
-- English version for [EN: eyeForm - AI test](https://neurobit-ai.github.io/eyeForm/myopia/us-en/)
-- Traditional Chinese version for [TW: eyeForm – AI test](https://neurobit-ai.github.io/eyeForm/myopia/zh-tw/)
-- Simplified Chinese version for [CH: eyeForm – AI test](https://neurobit-ai.github.io/eyeForm/myopia/zh-cn/)
+- Default (EN) version for [EN: eyeForm - AI test](https://alisterchan.github.io/eyeForm_new_feature/myopia/)
+- English version for [EN: eyeForm - AI test](https://alisterchan.github.io/eyeForm_new_feature/myopia/us-en/)
+- Traditional Chinese version for [TW: eyeForm – AI test](https://alisterchan.github.io/eyeForm_new_feature/myopia/zh-tw/)
+- Simplified Chinese version for [CH: eyeForm – AI test](https://alisterchan.github.io/eyeForm_new_feature/myopia/zh-cn/)
 - 個人測試用 [連結](https://alisterchan.github.io/eyeForm_new_feature/myopia/3class/)
 #### Access to the TSGH exclusive platform is restricted to authorized users only.
 - TSGH version (Traditional Chinese version) for [TSGH: eyeForm - AI test](https://neurobit-ai.github.io/eyeForm/)
