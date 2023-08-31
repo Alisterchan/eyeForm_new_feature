@@ -74,15 +74,15 @@ if language_type == 0 :
     new_index_names  = {'Age　': '年齡　'}
     df.rename(index=new_index_names, inplace=True)
     df.columns = df.loc['年齡　']
-    df = df.drop(index='年齡　')
+    #df = df.drop(index='年齡　')
 elif  language_type == 2:
     new_index_names  = {'Age　': '年龄　'}
     df.rename(index=new_index_names, inplace=True)
     df.columns = df.loc['年龄　']
-    df = df.drop(index='年龄　')
+    #df = df.drop(index='年龄　')
 else:
     df.columns = df.loc['Age　']
-    df = df.drop(index='Age　')
+    #df = df.drop(index='Age　')
 
 duplicated_columns = df.columns[df.columns.duplicated()]
 if not duplicated_columns.empty:
@@ -95,8 +95,8 @@ if not duplicated_columns.empty:
             renamed_columns = pd.Index(renamed_columns)
             count += 1
     df.columns = renamed_columns
-
-styled_df = df.style.set_properties(**{
+styled_df = df.style.hide_columns()
+styled_df = styled_df.set_properties(**{
 'background-color': 'white', 
 'color': 'black',
 'text-align': 'center',
