@@ -95,7 +95,7 @@ if not duplicated_columns.empty:
             renamed_columns = pd.Index(renamed_columns)
             count += 1
     df.columns = renamed_columns
-styled_df = df.style.hide_columns()
+styled_df = df.style.hide(axis="columns")
 styled_df = styled_df.set_properties(**{
 'background-color': 'white', 
 'color': 'black',
