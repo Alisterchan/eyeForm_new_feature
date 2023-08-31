@@ -7,7 +7,7 @@ import pandas as pd
 import pickle
 with open('data_to_plot.pkl', 'rb') as f:
     db_version, slope_groupby, stacked_area = pickle.load(f)[report]
-
+display(f'{db_version}', target='copyrightid')
 
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
