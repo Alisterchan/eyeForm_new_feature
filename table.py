@@ -99,5 +99,5 @@ styled_df = df.style.set_properties(**{
 })
 """
 #display(styled_df, target='table')
-
+print(df)
 display(df, target='table')
