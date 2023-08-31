@@ -95,4 +95,6 @@ styled_df = df.style.set_properties(**{
 'padding': '2px'
 })
 
-display(styled_df, target='table')
+#display(styled_df, target='table')
+
+display(df, target='table')
