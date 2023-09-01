@@ -70,7 +70,7 @@
         var decoded = jwt_decode(token);
         console.log(decoded.name);
         console.log(decoded.email);
-        if(decoded.name !=="Aleistar Chan" && decoded.email!=="neurobit.tech@gmail.com")
+        if(decoded.name !=="Aleistar Chan" && decoded.email !=="neurobit.tech@gmail.com")
         {
         document.getElementById("suggestion").style.display = "none";
         document.getElementById("uploadform").style.display = "none";
@@ -202,7 +202,8 @@
                         <label class="form-label" for="pretermW">周</label>
                       </div>
                       <div class="col-5 form-group">
-                        <input type="number" min=0 step=1 max=6 class="form-control" name="pretermD" id="pretermD">
+                        <input type="text" class="form-control" name="pretermD" id="pretermD" >
+                        <span id="day_errorMsg" class="warning_msg"></span>
                       </div>
                       <div class="col-1 form-group">
                         <label class="form-label" for="pretermD">天</label>
@@ -842,6 +843,23 @@
       }
     }
 
+    var pretermDValid=document.getElementById('pretermD');
+    pretermDValid.addEventListener('input', function() {
+    const inputValue = parseInt(this.value, 10);
+    if (isNaN(inputValue)) {
+      day_errorMsg.textContent= '请输入有效的数字';
+      pretermDValid.value=''
+    } else if (inputValue < 0 || inputValue > 6) {
+      day_errorMsg.textContent= '请输入 0 到 6 之间的数字。';
+      if (inputValue < 0)
+        pretermDValid.value='0';
+      if (inputValue > 6)
+        pretermDValid.value='6';      
+    } else {
+      day_errorMsg.textContent= '';
+    }
+  });
+  
     var dateOfVisit = document.getElementById('dateOfVisit');
     var dateOfBirth = document.getElementById('dateOfBirth');
     var customDate_dateOfBirth = document.getElementById('customDate_dateOfBirth');
