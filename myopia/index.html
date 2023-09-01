@@ -851,7 +851,7 @@
       day_errorMsg.textContent= 'Please enter a valid number.';
       pretermDValid.value=''
     } else if (inputValue < 0 || inputValue > 6) {
-      day_errorMsg.textContent= '請輸入 0 到 6 之間的數字。';
+      day_errorMsg.textContent= 'Please enter a value less than or equal to 6.';
       if (inputValue < 0)
         pretermDValid.value='0';
       if (inputValue > 6)
