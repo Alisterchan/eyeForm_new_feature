@@ -70,7 +70,7 @@
         var decoded = jwt_decode(token);
         console.log(decoded.name);
         console.log(decoded.email);
-        if(decoded.name !=="Aleistar Chan")
+        if(decoded.name !=="Aleistar Chan" && decoded.email!=="neurobit.tech@gmail.com")
         {
         document.getElementById("suggestion").style.display = "none";
         document.getElementById("uploadform").style.display = "none";
@@ -788,7 +788,7 @@
         dataType: 'json',
         success: function(data) {
           if (typeof data === 'object') {
-            (document.getElementById('site_info')).textContent="Institution(Done!)";
+            (document.getElementById('site_info')).textContent="Institution(Past medical records have been found.)";
             localStorage.setItem('records', JSON.stringify(data));
             document.getElementById('caseNo').value = data[0][0];
             document.getElementById('dateOfBirth').value = new Date(Date.parse(data[0][2])+8*60*60*1000).toISOString().split('T')[0];
@@ -833,7 +833,7 @@
             document.getElementById('os5dec').oninput();
           }
           else {
-            (document.getElementById('site_info')).textContent="Institution";
+            (document.getElementById('site_info')).textContent="Institution(Please fill in the new medical record)";
             localStorage.setItem('records', JSON.stringify([]));
             document.getElementById('caseNo').value = data;
           }
