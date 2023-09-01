@@ -202,7 +202,8 @@
                         <label class="form-label" for="pretermW">Week</label>
                       </div>
                       <div class="col-5 form-group">
-                        <input type="number" min=0 step=1 max=6 class="form-control" name="pretermD" id="pretermD">
+                        <input type="text" class="form-control" name="pretermD" id="pretermD" >
+                        <span id="day_errorMsg" class="warning_msg"></span>
                       </div>
                       <div class="col-1 form-group">
                         <label class="form-label" for="pretermD">Day</label>
@@ -841,6 +842,23 @@
       });
       }
     }
+
+    var pretermDValid=document.getElementById('pretermD');
+    pretermDValid.addEventListener('input', function() {
+    const inputValue = parseInt(this.value, 10);
+    if (isNaN(inputValue)) {
+      day_errorMsg.textContent= 'Please enter a valid number.';
+      pretermDValid.value=''
+    } else if (inputValue < 0 || inputValue > 6) {
+      day_errorMsg.textContent= '請輸入 0 到 6 之間的數字。';
+      if (inputValue < 0)
+        pretermDValid.value='0';
+      if (inputValue > 6)
+        pretermDValid.value='6';      
+    } else {
+      day_errorMsg.textContent= '';
+    }
+  });
 
     var dateOfVisit = document.getElementById('dateOfVisit');
     var dateOfBirth = document.getElementById('dateOfBirth');
