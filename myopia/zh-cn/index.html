@@ -709,6 +709,7 @@
                     <label class="form-label" for="treatment2">散瞳剂</label>
                     <select class="form-select" name="treatment2" id="treatment2" disabled>
                       <option value=""></option>
+                      <option value="散瞳劑">点散瞳剂</option>
                       <option value="低散瞳劑">低散瞳剂</option>
                       <option value="中散瞳劑">中散瞳剂</option>
                       <option value="高散瞳劑">高散瞳剂</option>
@@ -1229,8 +1230,8 @@
           
           if (suggestion == '不處置') treatments('', '', '');
           else if (suggestion == '一般眼鏡') treatments('一般眼鏡', '', '');
-          else if (suggestion == '散瞳劑') treatments('', '中散瞳劑', '');
-          else if (suggestion == '一般眼鏡散瞳劑') treatments('一般眼鏡', '中散瞳劑', '');
+          else if (suggestion == '散瞳劑') treatments('', '散瞳劑', '');
+          else if (suggestion == '一般眼鏡散瞳劑') treatments('一般眼鏡', '散瞳劑', '');
           else if (suggestion == '角膜塑型片') treatments('', '', '角膜塑型片');
           else treatments('', '', '');
           
