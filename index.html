@@ -902,7 +902,20 @@
       }
     }
     else
-      week_errorMsg.textContent= '';
+    {
+      if(parseInt(this.value)>42)
+        {
+          week_errorMsg.textContent= '請輸入 0 到 42 之間的整數。';
+          pretermWValid.value='42';
+        }
+        else if(parseInt(this.value)<0)
+        {
+          week_errorMsg.textContent= '請輸入 0 到 42 之間的整數。';
+          pretermWValid.value='0';
+        }
+        else
+          week_errorMsg.textContent= '';
+    }
   });
 
     var pretermDValid=document.getElementById('pretermD');
